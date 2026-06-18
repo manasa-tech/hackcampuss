@@ -16,9 +16,11 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(const Duration(seconds: 2), () {
-      setState(() {
-        showDetails = true;
-      });
+      if (mounted) {
+        setState(() {
+          showDetails = true;
+        });
+      }
     });
   }
 
@@ -36,17 +38,16 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
 
               children: [
-                // Logo
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 1000),
-                  width: showDetails ? 140 : 120,
-                  height: showDetails ? 140 : 120,
+                  width: showDetails ? 150 : 120,
+                  height: showDetails ? 150 : 120,
 
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.blue.withValues(alpha: 0.5),
+                        color: Colors.blue.withAlpha(128),
                         blurRadius: 40,
                         spreadRadius: 5,
                       ),
@@ -65,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   ),
                 ),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
 
                 AnimatedOpacity(
                   duration: const Duration(milliseconds: 800),
@@ -80,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                               text: "Hack",
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 36,
+                                fontSize: 38,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -88,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen> {
                               text: "Campus",
                               style: TextStyle(
                                 color: Colors.blue,
-                                fontSize: 36,
+                                fontSize: 38,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -96,10 +97,10 @@ class _SplashScreenState extends State<SplashScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 12),
 
                       const Text(
-                        "Find. Join. Build. Win.",
+                        "Find • Join • Build • Win",
                         style: TextStyle(color: Colors.white70, fontSize: 18),
                       ),
 
@@ -141,30 +142,7 @@ class _SplashScreenState extends State<SplashScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 15),
-
-                      SizedBox(
-                        width: double.infinity,
-                        height: 55,
-
-                        child: OutlinedButton(
-                          onPressed: () {},
-
-                          style: OutlinedButton.styleFrom(
-                            side: const BorderSide(color: Colors.white24),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                          ),
-
-                          child: const Text(
-                            "I'm an Organizer",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 25),
 
                       const Text(
                         "Powering Future Innovators 🚀",

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart';
+import 'package:hackcampuss/screens/complete_register.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -7,7 +7,7 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0A0F1E),
+      backgroundColor: const Color(0xff0A0F1E),
 
       body: SafeArea(
         child: SingleChildScrollView(
@@ -16,59 +16,123 @@ class LandingPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
+              // HEADER
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.menu, color: Colors.white),
+                  ),
 
-              const Center(
-                child: Text(
-                  "HackCampus",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 36,
-                    fontWeight: FontWeight.bold,
+                  Row(
+                    children: [
+                      Container(
+                        width: 45,
+                        height: 45,
+                        decoration: BoxDecoration(
+                          color: Colors.deepPurple,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(Icons.code, color: Colors.white),
+                      ),
+
+                      const SizedBox(width: 10),
+
+                      const Text(
+                        "HackCampus",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.notifications_none,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 25),
+
+              // SEARCH BAR
+              Container(
+                height: 55,
+                decoration: BoxDecoration(
+                  color: const Color(0xff161F35),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+
+                child: const TextField(
+                  style: TextStyle(color: Colors.white),
+
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    prefixIcon: Icon(Icons.search, color: Colors.white54),
+
+                    hintText: "Search hackathons, colleges...",
+                    hintStyle: TextStyle(color: Colors.white54),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 10),
+              const SizedBox(height: 25),
 
-              const Center(
-                child: Text(
-                  "Find • Join • Build • Win",
-                  style: TextStyle(color: Colors.white60, fontSize: 16),
-                ),
-              ),
-
-              const SizedBox(height: 30),
-
+              // HERO BANNER
               Container(
-                height: 220,
+                height: 200,
                 width: double.infinity,
+
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
+
                   gradient: const LinearGradient(
-                    colors: [Color(0xFF6D5DFF), Color(0xFFA855F7)],
+                    colors: [Color(0xff4338CA), Color(0xff7C3AED)],
                   ),
                 ),
 
-                child: const Padding(
-                  padding: EdgeInsets.all(20),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "🚀 India's Largest Student Hackathon Network",
+                      const Text(
+                        "Build.\nInnovate.\nConquer.",
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: 24,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
 
-                      Spacer(),
+                      const SizedBox(height: 10),
 
-                      Text(
-                        "Discover opportunities, build amazing projects and connect with innovators.",
-                        style: TextStyle(color: Colors.white70, fontSize: 15),
+                      const Text(
+                        "Discover hackathons and build amazing projects.",
+                        style: TextStyle(color: Colors.white70),
+                      ),
+
+                      const Spacer(),
+
+                      ElevatedButton(
+                        onPressed: () {},
+
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                        ),
+
+                        child: const Text(
+                          "Explore Now",
+                          style: TextStyle(color: Colors.black),
+                        ),
                       ),
                     ],
                   ),
@@ -78,106 +142,93 @@ class LandingPage extends StatelessWidget {
               const SizedBox(height: 30),
 
               const Text(
-                "Why HackCampus?",
+                "Categories",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
 
-              featureCard(
-                Icons.emoji_events,
-                "Hackathons",
-                "Discover national and college-level hackathons.",
-              ),
-
-              featureCard(
-                Icons.groups,
-                "Team Building",
-                "Find teammates based on skills and interests.",
-              ),
-
-              featureCard(
-                Icons.workspace_premium,
-                "Certificates",
-                "Track participation and achievements.",
-              ),
-
-              featureCard(
-                Icons.psychology,
-                "AI Suggestions",
-                "Get smart recommendations for events.",
+              Wrap(
+                spacing: 10,
+                runSpacing: 10,
+                children: [
+                  categoryChip("AI/ML"),
+                  categoryChip("Web Dev"),
+                  categoryChip("Cloud"),
+                  categoryChip("Cyber"),
+                  categoryChip("UI/UX"),
+                  categoryChip("Blockchain"),
+                ],
               ),
 
               const SizedBox(height: 30),
 
               const Text(
-                "Platform Statistics",
+                "Featured Hackathons",
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
 
-              Row(
-                children: [
-                  Expanded(child: statCard("500+", "Hackathons")),
+              hackathonCard("HackMIT 6.0", "MIT Mysore", "₹1,00,000"),
 
-                  const SizedBox(width: 12),
+              hackathonCard("CodeCarnival 2024", "BV College", "₹75,000"),
 
-                  Expanded(child: statCard("10K+", "Students")),
-                ],
-              ),
+              hackathonCard("NITK Hack", "NITK Surathkal", "₹1,50,000"),
 
-              const SizedBox(height: 12),
-
-              Row(
-                children: [
-                  Expanded(child: statCard("200+", "Colleges")),
-
-                  const SizedBox(width: 12),
-
-                  Expanded(child: statCard("100+", "Organizers")),
-                ],
-              ),
-
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
 
               SizedBox(
                 width: double.infinity,
-                height: 60,
+                height: 55,
 
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
-                      ),
-                    );
-                  },
-
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const CompleteProfileScreen(),
+    ),
+  );
+},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF6D5DFF),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+                    backgroundColor: Colors.deepPurple,
                   ),
 
                   child: const Text(
-                    "Explore Hackathons",
-                    style: TextStyle(fontSize: 18, color: Colors.white),
+                    "I'm a Participant",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
+
+              SizedBox(
+                width: double.infinity,
+                height: 55,
+
+                child: OutlinedButton(
+                  onPressed: () {
+                    // Navigate to Organizer Dashboard
+                  },
+
+                  child: const Text(
+                    "I'm an Organizer",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 30),
             ],
           ),
         ),
@@ -185,19 +236,42 @@ class LandingPage extends StatelessWidget {
     );
   }
 
-  Widget featureCard(IconData icon, String title, String subtitle) {
+  static Widget categoryChip(String text) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 15),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
 
       decoration: BoxDecoration(
-        color: const Color(0xFF161F35),
+        color: const Color(0xff161F35),
+        borderRadius: BorderRadius.circular(25),
+      ),
+
+      child: Text(text, style: const TextStyle(color: Colors.white)),
+    );
+  }
+
+  static Widget hackathonCard(String title, String college, String prize) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.all(15),
+
+      decoration: BoxDecoration(
+        color: const Color(0xff161F35),
         borderRadius: BorderRadius.circular(18),
       ),
 
       child: Row(
         children: [
-          Icon(icon, color: Colors.deepPurpleAccent, size: 30),
+          Container(
+            width: 60,
+            height: 60,
+
+            decoration: BoxDecoration(
+              color: Colors.deepPurple,
+              borderRadius: BorderRadius.circular(12),
+            ),
+
+            child: const Icon(Icons.emoji_events, color: Colors.white),
+          ),
 
           const SizedBox(width: 15),
 
@@ -214,40 +288,20 @@ class LandingPage extends StatelessWidget {
                   ),
                 ),
 
+                Text(college, style: const TextStyle(color: Colors.white60)),
+
                 const SizedBox(height: 5),
 
-                Text(subtitle, style: const TextStyle(color: Colors.white60)),
+                Text(
+                  prize,
+                  style: const TextStyle(
+                    color: Colors.greenAccent,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ],
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget statCard(String value, String title) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-
-      decoration: BoxDecoration(
-        color: const Color(0xFF161F35),
-        borderRadius: BorderRadius.circular(18),
-      ),
-
-      child: Column(
-        children: [
-          Text(
-            value,
-            style: const TextStyle(
-              color: Colors.deepPurpleAccent,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-
-          const SizedBox(height: 5),
-
-          Text(title, style: const TextStyle(color: Colors.white70)),
         ],
       ),
     );
